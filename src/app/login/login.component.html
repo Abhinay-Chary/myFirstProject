@@ -1,0 +1,25 @@
+<div class="login-container">
+
+    
+    <form #loginForm="ngForm" style="align-items: center;display: flex;flex-direction: column;justify-content: center;">
+        <h2>Login</h2>
+        <div>
+        <label for="username">Username:</label>
+        <input matInput type="text" id="username" [(ngModel)]="userName" name="username" required #usernameField="ngModel">
+      </div>
+      <br>
+      <div>
+        <label for="password">Password:</label>
+        <input  matInput type="password" id="password" [(ngModel)]="password" name="password" required #passwordField="ngModel">
+       
+      </div>
+      <br>
+      <div>
+
+        <button style="width: 50%;" mat-raised-button (click)="login()">Login</button>
+      <button  style="width: 50%;"  mat-raised-button  (click)="signUp()">SignUp</button>
+       
+      </div>
+    </form>
+  </div>
+  

@@ -1,0 +1,15 @@
+
+  <div style="display: grid;grid-template-columns: repeat(3,1fr);grid-row-gap: 20px;">
+
+   <div  *ngFor="let item of fruits"  style="display: grid;justify-content: center;">
+       <label class='itemList' bg>{{item.name.split('.')[0]}}</label> 
+    <label class='itemList' style="text-decoration: line-through;" bg> Price: {{item.price +5 |price}} </label>
+     <label class='itemList' bg >  offer Price: {{item.price}}₹</label>
+     
+        <label class='itemList' bg>     Available:{{item.quantity}}  </label>
+        <img  bg style="width: 114px ;height: 100px;;" [src]='item.source' alt="abhi">
+        <br>
+        <span>
+        <button mat-raised-button (click)="addToCart(item,'dec')" bg>-</button><button mat-raised-button (click)="addToCart(item,'inc')" bg>+</button>
+      </span></div>
+  </div>

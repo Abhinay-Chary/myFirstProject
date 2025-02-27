@@ -1,0 +1,12 @@
+<div style="display: grid;grid-template-columns: repeat(3,1fr);">
+    <ng-container *ngFor="let a of appService.data.cart">
+        Name:{{a.name.split('.')[0]}}
+        Quantity:{{a.quantity}}
+        Price: {{a.price}}
+<img [src]="a.source" style="width: 100px;height: 100px;">
+    </ng-container>
+ 
+</div>
+<div>
+    Total:{{appService.data.cartPrice}}
+   </div>
