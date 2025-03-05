@@ -27,7 +27,7 @@ constructor(public appService:AppService,private http:HttpClient,private store:S
  ngOnInit(): void {
   this.appService.data['cartValue']=0;
   let d:any='st'
-  //this.appService.data['cartValue']= this.store.select(d)
+  this.appService.data['cartValue']= this.store.select(d)
    this.appService.getFruits().subscribe(x=>{
     console.log(x)
     this.fruits=x
