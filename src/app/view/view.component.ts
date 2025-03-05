@@ -33,7 +33,8 @@ d=x
  if(d==0 && act =='dec' )
   return 
 else
-   { this.store.dispatch(c());
+   { alert('abhi')
+    this.store.dispatch(c());
     // this.store.dispatch(update({ data: item }));
     
     if(this.appService.data.cart==undefined)
