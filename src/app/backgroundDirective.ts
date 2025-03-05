@@ -11,9 +11,7 @@ export class backgroundDirective{
 
     @HostListener('mouseenter')
     onClick(){
-        console.log('cli') 
-
-        this.rend.setStyle(this.ele.nativeElement,'background','grey')
+       this.rend.setStyle(this.ele.nativeElement,'background','grey')
 
     }
     @HostListener('mouseleave')

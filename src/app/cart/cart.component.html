@@ -1,12 +1,24 @@
-<div style="display: grid;grid-template-columns: repeat(3,1fr);">
+<div style="display: flex;flex-wrap: wrap;">
     <ng-container *ngFor="let a of appService.data.cart">
-        Name:{{a.name.split('.')[0]}}
-        Quantity:{{a.quantity}}
-        Price: {{a.price}}
+        <div style="width: 33%;">
+        <span >       Name:{{a.name.split('.')[0]}} </span>
+        <span>       Quantity:{{a.quantity}}       </span>
+        <span>       Price: {{a.price}}</span>
 <img [src]="a.source" style="width: 100px;height: 100px;">
+
+    </div>
     </ng-container>
- 
 </div>
-<div>
-    Total:{{appService.data.cartPrice}}
+<div style="display: flex; justify-content: center;align-items: center;">
+    Total:{{appService.data.cartPrice | price}}
    </div>
+<div style="display: grid;justify-content: center;gap:10px">
+    <input [(ngModel)]="upi" placeholder="please enter upi here">
+    <button (click)="buy()" >
+        Buy
+    </button>
+    <button (click)="saveForLater()">
+        saveForLater
+    </button>
+   
+</div>

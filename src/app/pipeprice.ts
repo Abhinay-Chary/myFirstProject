@@ -6,6 +6,8 @@ import { Pipe, PipeTransform } from "@angular/core";
 
 export class pipeprice implements PipeTransform{
     transform(value: any, ...args: any[]) {
-        return value+ '$$'
+        if(value)
+        return value+ '     Inr'
+    else return ''
     }
 }
