@@ -25,22 +25,15 @@ export class ViewComponent {
 
   }
   addToCart(item:any,act:any){
-//  let c=eval(act);
-let d= this.appService.data['cartValue']
- ;
- /* this.appService.data.cartValue.subscribe((x:any)=>{
+ let c=eval(act);
+ let d;
+ this.appService.data.cartValue.subscribe((x:any)=>{
 d=x
- }) */
+ })
  if(d==0 && act =='dec' )
   return 
 else
-   { if(act=='inc')
-    this.appService.data['cartValue']+=1
-   // this.store.dispatch(inc());
-    else
-    this.appService.data['cartValue']-=1
-
- //   this.store.dispatch(dec())
+   { this.store.dispatch(c());
     // this.store.dispatch(update({ data: item }));
     
     if(this.appService.data.cart==undefined)
