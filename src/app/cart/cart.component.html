@@ -1,12 +1,11 @@
 <div style="display: flex;flex-wrap: wrap;">
     <ng-container *ngFor="let a of appService.data.cart">
-        <div style="width: 33%;">
-        <span >       Name:{{a.name.split('.')[0]}} </span>
-        <span>       Quantity:{{a.quantity}}       </span>
-        <span>       Price: {{a.price}}</span>
-<img [src]="a.source" style="width: 100px;height: 100px;">
-
-    </div>
+        <pre>
+          Name:     {{a.name.split('.')[0]}}
+          Quantity: {{a.quantity}}
+          Price:    {{a.price}}
+          <img [src]="a.source" style="width: 100px;height: 100px;">
+</pre>
     </ng-container>
 </div>
 <div style="display: flex; justify-content: center;align-items: center;">

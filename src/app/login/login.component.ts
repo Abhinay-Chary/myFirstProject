@@ -6,7 +6,7 @@ import {MatInput,MatFormField,MatLabel} from '@angular/material/input'
 import {MatButtonModule,MatButton} from '@angular/material/button'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { jwtDecode} from 'jwt-decode'
-import { catchError, exhaustMap, forkJoin, from, mergeMap, of, switchMap } from 'rxjs';
+import { catchError, exhaustMap, forkJoin, from, fromEvent, mergeMap, of, switchMap } from 'rxjs';
 import { AppService } from '../app.service';
 
 @Component({
@@ -21,17 +21,15 @@ export class LoginComponent implements OnInit {
   password:any='Abhi';
 constructor(private http:HttpClient,private router:Router,private appService:AppService){}
 ngOnInit(){
-  console.log('forRJ');
-  const arr=this.http.get('http://localhost:3000/getFruits').pipe(catchError(e=>{return of(['error1'])}))
-  const arr2=this.http.get('https://reqres.in/api/users?page=2').pipe(catchError(e=>{return of(['error2'])}))
- forkJoin(
- arr,arr2
- ).subscribe(([a,b])=>{
-console.log("x",a)
-console.log("y",b)
- },
-
- )
+ let a:any=document.getElementById('username')
+ fromEvent(a,'input').pipe(
+  switchMap(x=>{
+    return this.http.get('https://reqres.in/api/users?page=2')
+  })
+ ).subscribe(xx=>{
+  console.log(xx)
+ })
+  
 }
   signUp(){
     this.appService.signUp(this.userName,this.password)

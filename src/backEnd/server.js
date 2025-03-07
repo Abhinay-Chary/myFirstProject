@@ -57,8 +57,8 @@ res.json('failed!!')
 })
 
 app.post('/addFruit',async(req,res)=>{
-let {name,source}=req.body;
-const fruit = new Fruit({name:name,source:source});
+let {name,source,type}=req.body;
+const fruit = new Fruit({name:name,source:source,type:type});
 const resp=await fruit.save()
 console.log(resp);
 res.json(resp)
@@ -70,7 +70,7 @@ app.get('/getFruits',async (req,res)=>{
 });
 app.post('/updateFruits',async(req,res)=>{
     console.log(req.body)
-const fruit= await Fruit.findOneAndUpdate({name:req.body.name},{price:req.body.price,quantity:req.body.quantity},{new:true});
+const fruit= await Fruit.findOneAndUpdate({name:req.body.name},{price:req.body.price,quantity:req.body.quantity,type:req.body.type},{new:true});
 res.json(fruit);
 })
 app.get('/getProducts',()=>{})
