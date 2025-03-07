@@ -16,6 +16,6 @@ export class AppComponent implements OnInit {
   constructor(private router:Router,public appService:AppService){}
   ngOnInit(): void {
     this.appService.data.show=false
-    // this.router.navigateByUrl('login');
+    this.router.navigateByUrl('login');
   }
 }
