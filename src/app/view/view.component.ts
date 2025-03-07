@@ -7,27 +7,33 @@ import { AppService } from '../app.service';
 import { Store, StoreModule } from '@ngrx/store';
 import { cr } from '../actions/reducers';
 import { inc,dec, } from '../actions/actions';
-
+import { FormsModule } from '@angular/forms';
 import { select } from '../actions/select';
 import { pipeprice } from '../pipeprice';
 import { backgroundDirective } from '../backgroundDirective';
+
 @Component({
   selector: 'app-view',
   standalone: true,
-  imports: [MatCard,MatCardAvatar,MatCardContent,MatCardActions,MatButtonModule,MatButton,NgFor,pipeprice,backgroundDirective],
+  imports: [FormsModule,MatButtonModule,MatButton,NgFor,pipeprice,backgroundDirective],
   templateUrl: './view.component.html',
   styleUrl: './view.component.scss'
 })
 export class ViewComponent implements OnInit,OnChanges{
+  forSearch: any;
+  va: any='';
+
   temp: any;
 
   @Input()
   fruits:any;
   ngOnInit(): void {
-    this.temp=[...this.fruits]
+    this.temp=[...this.fruits];
+    this.forSearch=[...this.fruits]
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.temp=[...this.fruits]
+    this.forSearch=[...this.fruits]
     
   }
   filter(sel:any) {
@@ -35,18 +41,21 @@ export class ViewComponent implements OnInit,OnChanges{
     if(sel!=''){
       if(sel=='Vegetable')
     this.temp=this.fruits.filter((item:any)=>{
-      return item.type!=undefined
+      return item.type!=undefined && item.name.includes(this.va.toLowerCase())
     }
   )
   else if(sel=='Fruits'){
     this.temp=this.fruits.filter((item:any)=>{
-      return item.type==undefined
+      return item.type==undefined && item.name.toLowerCase().includes(this.va.toLowerCase())
     })
   }
+
 }
   else{
     
-    this.temp=[...this.fruits]
+    this.temp=this.fruits.filter((item:any)=>{
+     return item.name.toLowerCase().includes(this.va.toLowerCase())
+    })
   }
     }
   constructor(private http:HttpClient,private appService:AppService,private store:Store){

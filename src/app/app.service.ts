@@ -6,15 +6,17 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class AppService {
+  private apiUrl = 'https://original-1.onrender.com/';
+ // private apiUrl: 'http://localhost:3000';
   getFruits() {
-    return this.http.get('http://localhost:3000/getFruits')
+    return this.http.get(`${this.apiUrl}/getFruits`)
   }
   login(userName:any,password:any) {
-   return this.http.post('http://localhost:3000/login',{name:userName,password:password})
+   return this.http.post(`${this.apiUrl}/login`,{name:userName,password:password})
   }
   signUp(userName:any,password:any) {
-    console.log('sigUp');
-this.http.post('http://localhost:3000/signUp',{name:userName,password:password}).subscribe(x=>{console.log(x)});
+ 
+this.http.post(`${this.apiUrl}/signUp`,{name:userName,password:password}).subscribe(x=>{console.log(x)});
  
   }
   constructor(private http:HttpClient){}
