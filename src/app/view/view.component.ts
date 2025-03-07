@@ -53,18 +53,21 @@ export class ViewComponent implements OnInit,OnChanges{
 
   }
   addToCart(item:any,act:any){
- let c=eval(act);
+//  let c=eval(act);
  let d;
  this.appService.data.cartValue.subscribe((x:any)=>{
 d=x
  })
+ console.log('d',d,act)
  if(d==0 && act =='dec' )
   return 
 else
-   {
-    this.store.dispatch(c());
+   {if(act=='dec')
+    this.store.dispatch(dec());
+    else
+    this.store.dispatch(inc());
     // this.store.dispatch(update({ data: item }));
-    
+    alert
     if(this.appService.data.cart==undefined)
     {this.appService.data.cart=[];
     
