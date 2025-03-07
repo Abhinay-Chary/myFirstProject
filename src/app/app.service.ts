@@ -6,7 +6,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class AppService {
-  private apiUrl = 'https://original-1.onrender.com/';
+  private apiUrl = 'https://original-1.onrender.com';
  // private apiUrl: 'http://localhost:3000';
   getFruits() {
     return this.http.get(`${this.apiUrl}/getFruits`)
