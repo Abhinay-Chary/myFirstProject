@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,9 +12,10 @@ import { jwtDecode } from 'jwt-decode';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent  implements OnInit{
-  constructor(public router:Router){}
+  constructor(public router:Router,private appService:AppService){}
 logOut() {
-  sessionStorage.setItem('expiry','')
+  sessionStorage.setItem('expiry','');
+  this.appService.data.cart=[]
 this.router.navigateByUrl('/login')
 }
   name: any;
