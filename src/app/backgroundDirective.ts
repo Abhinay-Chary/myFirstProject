@@ -6,7 +6,7 @@ import { Directive, ElementRef, HostListener, Renderer2 } from "@angular/core";
 })
 export class backgroundDirective{
     constructor(private rend:Renderer2,private ele:ElementRef) {  
-        console.log('abhi') 
+        
     }
 
     @HostListener('mouseenter')

@@ -26,7 +26,7 @@ export class AddFruitComponent {
  
   }
   upload(){
-  this.http.post('http://localhost:3000/addFruit',{name:this.file.name,source:this.img,type:'vegetable'}).subscribe(x=>{
+  this.http.post('http://localhost:3000/addFruit',{name:this.file.name,source:this.img}).subscribe(x=>{
     console.log(x,'image upoladed');
   })
 
