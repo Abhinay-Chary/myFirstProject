@@ -2,3 +2,12 @@
 .itemList{
     display: grid;justify-content: center;font-size: large;
 }
+@media (max-width:768px) {
+    .mainDiv{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        padding-top:3px !important;
+        
+    }
+    
+}

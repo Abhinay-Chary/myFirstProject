@@ -64,7 +64,13 @@ export class ViewComponent implements OnInit, OnChanges {
   addToCart(item: any, act: any) {
     //  let c=eval(act);
     let d;
-    this.appService.data.cartValue.subscribe((x: any) => {
+  let ee:any='st'
+
+  if(this.appService.data.newCartValue){
+    d=this.appService.data.newCartValue;
+    this.appService.data.newCartValue=''
+  }else
+    this.store.select(ee).subscribe((x: any) => {
       d = x
     })
     if (d == 0 && act == 'dec')
@@ -72,7 +78,7 @@ export class ViewComponent implements OnInit, OnChanges {
     else {
       if (act == 'dec'){}
       else
-        this.store.dispatch(inc());
+        this.store.dispatch(inc({data:d}));
       // this.store.dispatch(update({ data: item }));
       let doDec=false;
       let found1=false
@@ -123,7 +129,7 @@ export class ViewComponent implements OnInit, OnChanges {
           return +x.price + acc
         }, 0)
       }
-      if(doDec==false && act=='dec' &&found1!=false){this.store.dispatch(dec());}
+      if(doDec==false && act=='dec' &&found1!=false){this.store.dispatch(dec({data:d}));}
     
     }
 

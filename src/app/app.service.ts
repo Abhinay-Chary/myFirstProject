@@ -6,8 +6,23 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class AppService {
+  getCart(name: any) {
+    return this.http.get(`${this.apiUrl}/getCart/${name}`)
+  }
+  saveforLater(user:any,data:any) {
+    let y:any=[]
+    data.forEach((x:any,ind:any)=>{
+      y[ind]={
+         name: x.name,
+        quantity:  x.quantity
+      }
+  })
+  console.log(y)
+  
+    return this.http.post(`${this.apiUrl}/saveForLater`,{userName:user,obj:y})
+  }
   private apiUrl = 'https://original-1.onrender.com';
- // private apiUrl: 'http://localhost:3000';
+  //private apiUrl ='http://localhost:3000';
   getFruits() {
     return this.http.get(`${this.apiUrl}/getFruits`)
   }

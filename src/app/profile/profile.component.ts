@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
 @Component({
@@ -10,12 +11,17 @@ import { jwtDecode } from 'jwt-decode';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent  implements OnInit{
+  constructor(public router:Router){}
+logOut() {
+this.router.navigateByUrl('/login')
+}
   name: any;
   _id: any;
   iat: any;
   exp: any;
 myTimer: any;
   ngOnInit(): void {
+    
     this.myTimer=0
     let c=setInterval(() => {
       if(this.myTimer>10)

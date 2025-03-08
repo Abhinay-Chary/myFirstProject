@@ -6,7 +6,7 @@
       <button class="nav-link rounded-5" id="profile-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" (click)="open('profileView')">Profile</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link rounded-5" id="contact-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" (click)="open('cart')">cart({{appService.data.cartValue |async}})</button>
+      <button class="nav-link rounded-5" id="contact-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" (click)="open('cart')">cart({{val }})</button>
     </li>
   </ul>
   <app-view [fruits]='fruits' *ngIf="appView"> </app-view>

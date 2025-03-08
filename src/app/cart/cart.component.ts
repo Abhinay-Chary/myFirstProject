@@ -22,7 +22,9 @@ ngOnInit(): void {
   this.user=user
 }
 saveForLater() {
-throw new Error('Method not implemented.');
+  this.appService.saveforLater(this.user,this.appService.data.cart).subscribe(xx=>{
+    console.log(xx)
+  });
 }
 buy() {
   const upiId = 'yourupi@upi';
