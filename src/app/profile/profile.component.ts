@@ -13,6 +13,7 @@ import { jwtDecode } from 'jwt-decode';
 export class ProfileComponent  implements OnInit{
   constructor(public router:Router){}
 logOut() {
+  sessionStorage.setItem('expiry','')
 this.router.navigateByUrl('/login')
 }
   name: any;
