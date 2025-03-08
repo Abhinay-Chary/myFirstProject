@@ -28,7 +28,7 @@ constructor(public appService:AppService,private http:HttpClient,private store:S
 
  }
  ngOnInit(): void {
-  this.appService.data['cartValue']=0;
+  this.val=0;
   let t:any=sessionStorage.getItem('expiry')
   let token:any= jwtDecode(t);
   console.log(token.name.name);
@@ -36,7 +36,11 @@ constructor(public appService:AppService,private http:HttpClient,private store:S
     this.temp1=x.data.cart
     console.log(x.data.cart,'cartitem')
   })
-
+this.appService.logout.subscribe(x=>{
+  if(x==true){
+    this.val=0
+  }
+})
   
   let d:any='st'
   this.store.select(d).subscribe(x=>{
@@ -47,6 +51,7 @@ constructor(public appService:AppService,private http:HttpClient,private store:S
     console.log(x)
     this.fruits=x;
     let z:any;
+    if(this.temp1)
 this.temp1.forEach((r:any,ind:any)=>{
   if(z==undefined)z=[]
  x.forEach((y:any)=>{
@@ -58,11 +63,13 @@ this.temp1.forEach((r:any,ind:any)=>{
     
 });
 console.log(this.temp1);
+if(this.temp1){
 this.appService.data.cart=this.temp1
 this.val=this.temp1.reduce((acc:any,val:any)=>{
   return acc+ val.quantity
 
 },0)
+}
 if(this.val){
   this.appService.data.newCartValue=this.val
 }

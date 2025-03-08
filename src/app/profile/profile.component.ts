@@ -15,7 +15,8 @@ export class ProfileComponent  implements OnInit{
   constructor(public router:Router,private appService:AppService){}
 logOut() {
   sessionStorage.setItem('expiry','');
-  this.appService.data.cart=[]
+  this.appService.data.cart=[];
+  this.appService.logOut()
 this.router.navigateByUrl('/login')
 }
   name: any;
