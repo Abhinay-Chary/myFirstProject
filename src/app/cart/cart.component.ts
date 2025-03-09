@@ -5,6 +5,7 @@ import { pipeprice } from '../pipeprice';
 import { FormsModule } from '@angular/forms';
 import { jwtDecode } from 'jwt-decode';
 import { MatButton } from '@angular/material/button';
+import {MatSnackBar} from '@angular/material/snack-bar'
 @Component({
   selector: 'app-cart',
   standalone: true,
@@ -23,11 +24,25 @@ ngOnInit(): void {
   this.user=user
 }
 saveForLater() {
+  this.appService.data.show=true
   this.appService.saveforLater(this.user,this.appService.data.cart).subscribe(xx=>{
-    console.log(xx)
+    console.log(xx);
+    this.appService.data.show=false;
+    this.sb.open('your items are saved','Close',{
+     
+      verticalPosition:'top',
+      horizontalPosition:'center',
+      panelClass:['myPanel']
+
+    })
   });
 }
 buy() {
+  this.sb.open('Oops no service is there for payment','Close',{
+    duration:500,
+    verticalPosition:'top',
+    horizontalPosition:'center'
+  })
   const upiId = 'yourupi@upi';
   const amount = 500;
   const name = 'Your Business Name';
@@ -40,7 +55,7 @@ buy() {
 
 
 }
-constructor(public appService:AppService) { 
+constructor(public appService:AppService,private sb:MatSnackBar) { 
  
 }
 

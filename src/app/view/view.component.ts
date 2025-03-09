@@ -26,10 +26,11 @@ export class ViewComponent implements OnInit, OnChanges {
   temp: any;
 
   @Input()
-  fruits: any;
+  fruits=[];
   ngOnInit(): void {
-    this.temp = [...this.fruits];
-    this.forSearch = [...this.fruits]
+    if(this.fruits)
+    {this.temp = [...this.fruits];
+    this.forSearch = [...this.fruits]}
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.temp = [...this.fruits]
