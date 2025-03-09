@@ -33,7 +33,14 @@ ngOnInit(){
   
 }
   signUp(){
-    this.appService.signUp(this.userName,this.password)
+    this.appService.signUp(this.userName,this.password).subscribe(x=>{
+     this.sb.open('user signUp successfully','close',{
+      duration:1000,
+      verticalPosition:'top',
+      horizontalPosition:'center'
+     })
+      
+    })
    }
   login(){
     this.appService.data.show=true;

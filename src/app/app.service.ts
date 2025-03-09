@@ -35,7 +35,7 @@ export class AppService {
   }
   signUp(userName:any,password:any) {
  
-this.http.post(`${this.apiUrl}/signUp`,{name:userName,password:password}).subscribe(x=>{console.log(x)});
+return this.http.post(`${this.apiUrl}/signUp`,{name:userName,password:password})
  
   }
   constructor(private http:HttpClient){}
