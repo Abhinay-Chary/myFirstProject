@@ -4,10 +4,11 @@ import { NgFor } from '@angular/common';
 import { pipeprice } from '../pipeprice';
 import { FormsModule } from '@angular/forms';
 import { jwtDecode } from 'jwt-decode';
+import { MatButton } from '@angular/material/button';
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [NgFor,pipeprice,FormsModule],
+  imports: [NgFor,pipeprice,FormsModule,MatButton],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
