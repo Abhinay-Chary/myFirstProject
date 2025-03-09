@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { AppService } from '../app.service';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [DatePipe],
+  imports: [DatePipe,MatButton],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
