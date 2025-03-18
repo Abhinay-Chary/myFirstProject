@@ -18,7 +18,7 @@ logOut() {
   sessionStorage.setItem('expiry','');
   this.appService.data.cart=[];
   this.appService.logOut()
-this.router.navigateByUrl('/login')
+  window.location.reload()
 }
   name: any;
   _id: any;

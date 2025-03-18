@@ -9,10 +9,12 @@ import { jwtDecode} from 'jwt-decode'
 import { catchError, exhaustMap, forkJoin, from, fromEvent, mergeMap, of, switchMap } from 'rxjs';
 import { AppService } from '../app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { mydirective } from '../myDirective';
 
 @Component({
   selector: 'app-login',
   standalone: true,
+  providers:[mydirective],
   imports: [HttpClientModule,FormsModule,MatInput,MatFormField,MatFormFieldModule,MatLabel,MatButton,MatButtonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -20,7 +22,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LoginComponent implements OnInit {
   userName:any='Abhi';
   password:any='Abhi';
-constructor(private http:HttpClient,private router:Router,private appService:AppService,private sb:MatSnackBar){}
+constructor(private http:HttpClient,private router:Router,public appService:AppService,private sb:MatSnackBar){}
 ngOnInit(){
 /*  let a:any=document.getElementById('username')
  fromEvent(a,'input').pipe(
@@ -43,7 +45,9 @@ ngOnInit(){
     })
    }
   login(){
+    
     this.appService.data.show=true;
+   
     this.appService.login(this.userName,this.password).subscribe((x:any)=>{
       if(x.message=='userExists'){
         console.log(x.message);
@@ -60,10 +64,10 @@ ngOnInit(){
           panelClass:['myPanel']
         })
         this.appService.data.show=false
-     /*  setTimeout(() => {
-        this.router.navigateByUrl('login')
+       setTimeout(() => {
+        window.location.reload()
         alert('loggedOut')
-      }, x.expires*1000); */
+      }, x.expires*10000); 
       }else{
         this.appService.data.show=false;
         alert('invalid credentials')

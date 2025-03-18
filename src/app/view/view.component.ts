@@ -15,7 +15,7 @@ import { backgroundDirective } from '../backgroundDirective';
 @Component({
   selector: 'app-view',
   standalone: true,
-  imports: [FormsModule, MatButtonModule, MatButton, NgFor, pipeprice, backgroundDirective],
+  imports: [FormsModule, MatButtonModule, MatButton, NgFor, pipeprice, backgroundDirective,MatCard,MatCardContent],
   templateUrl: './view.component.html',
   styleUrl: './view.component.scss'
 })
@@ -33,9 +33,10 @@ export class ViewComponent implements OnInit, OnChanges {
     this.forSearch = [...this.fruits]}
   }
   ngOnChanges(changes: SimpleChanges): void {
-    this.temp = [...this.fruits]
+    if(this.fruits)
+    {this.temp = [...this.fruits]
     this.forSearch = [...this.fruits]
-
+    }
   }
   filter(sel: any) {
     console.log(sel);

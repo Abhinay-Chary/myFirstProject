@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node src/backEnd/server.js",
+    "start": "ng serve",
     "build:backend": "npm run build",
     "dev": "concurrently \"ng serve\" \"node src/backEnd/server.js\"", 
     "deploy": "npm run build && npm run build:backend",

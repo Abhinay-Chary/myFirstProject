@@ -1,6 +1,5 @@
 <div class="login-container">
 
-    
     <form #loginForm="ngForm" style="align-items: center;display: flex;flex-direction: column;justify-content: center;">
         <h2>Login</h2>
         <div>
@@ -16,8 +15,8 @@
       <br>
       <div>
 
-        <button style="width: 50%;" mat-raised-button (click)="login()">Login</button>
-      <button  style="width: 50%;"  mat-raised-button  (click)="signUp()">SignUp</button>
+        <button style="width: 50%;" mat-raised-button [disabled]="appService.data.show" (click)="login()">Login</button>
+      <button  style="width: 50%;"  mat-raised-button   [disabled]="appService.data.show"  (click)="signUp()">SignUp</button>
        
       </div>
     </form>
