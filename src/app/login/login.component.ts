@@ -20,8 +20,8 @@ import { mydirective } from '../myDirective';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
-  userName:any='Abhi';
-  password:any='Abhi';
+  userName:any='';
+  password:any='';
 constructor(private http:HttpClient,private router:Router,public appService:AppService,private sb:MatSnackBar){}
 ngOnInit(){
 /*  let a:any=document.getElementById('username')
@@ -67,7 +67,7 @@ ngOnInit(){
        setTimeout(() => {
         window.location.reload()
         alert('loggedOut')
-      }, x.expires*10000); 
+      }, x.expires*30000); 
       }else{
         this.appService.data.show=false;
         alert('invalid credentials')

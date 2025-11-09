@@ -23,11 +23,12 @@
      <label class='itemList'  >  offer Price: {{item.price}}₹</label>
      
         <label class='itemList' >     Available:{{item.quantity}}  </label>
+        <div style="justify-content: center;display: flex">
         <img  bg style="width: 114px ;height: 100px;align-items: center;justify-content: center;" [src]='item.source' alt="abhi">
-        <br> 
-        <span>
+      </div>  <br> 
+    <div style="display:flex">
         <button mat-raised-button (click)="addToCart(item,'dec')" >-</button><button mat-raised-button (click)="addToCart(item,'inc')" bg>+</button>
-      </span>
+     </div>
       </mat-card-content>
     </mat-card></div>
   </div>
