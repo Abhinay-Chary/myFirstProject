@@ -22,6 +22,7 @@ import { mydirective } from '../myDirective';
 export class LoginComponent implements OnInit {
   userName:any='';
   password:any='';
+  
 constructor(private http:HttpClient,private router:Router,public appService:AppService,private sb:MatSnackBar){}
 ngOnInit(){
 /*  let a:any=document.getElementById('username')
@@ -35,8 +36,9 @@ ngOnInit(){
   
 }
   signUp(){
-    this.appService.signUp(this.userName,this.password).subscribe(x=>{
-     this.sb.open('user signUp successfully','close',{
+    this.appService.signUp(this.userName,this.password).subscribe((x:ApiResponse)=>{
+     const message:string=x.message??"no message from server"
+     this.sb.open(message,'close',{
       duration:1000,
       verticalPosition:'top',
       horizontalPosition:'center'
@@ -76,3 +78,7 @@ ngOnInit(){
 
   }
 }
+
+type ApiResponse = {
+  message?: string;
+};
