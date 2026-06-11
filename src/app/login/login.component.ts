@@ -51,7 +51,7 @@ ngOnInit(){
     this.appService.data.show=true;
    
     this.appService.login(this.userName,this.password).subscribe((x:any)=>{
-      if(x.message=='userExists'){
+      if(x.message=='Login successful'){
         console.log(x.message);
        // let y:any=jwtDecode(x.token);
       //  console.log(y)
