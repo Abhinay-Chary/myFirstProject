@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { environment } from '../environments/env';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
     logout= new Subject();
+    apiUrl= environment.apiUrl;
   logOut() {
    this.logout.next(true)
   }
@@ -25,8 +27,7 @@ export class AppService {
   
     return this.http.post(`${this.apiUrl}/saveForLater`,{userName:user,obj:y})
   }
-  private apiUrl = 'https://original-1.onrender.com';
-  //private apiUrl ='http://localhost:3000';
+ 
   getFruits() {
     return this.http.get(`${this.apiUrl}/getFruits`)
   }
