@@ -19,7 +19,7 @@ import { mydirective } from '../myDirective';
 // TODO: `HttpClientModule` should not be imported into a component directly.
 // Please refactor the code to add `provideHttpClient()` call to the provider list in the
 // application bootstrap logic and remove the `HttpClientModule` import from this component.
- FormsModule, MatInput, MatFormField, MatFormFieldModule, MatLabel, MatButton, MatButtonModule],
+ FormsModule, MatInput, MatFormFieldModule, MatButton, MatButtonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

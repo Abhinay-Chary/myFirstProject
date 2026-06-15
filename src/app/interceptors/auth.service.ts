@@ -1,5 +1,4 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpInterceptorFn } from '@angular/common/http';
 
   export const authinterceptor : HttpInterceptorFn = (req,next)=>{
    const token:string = sessionStorage.getItem('expiry')??'';
