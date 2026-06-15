@@ -12,5 +12,5 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { AppService } from './app.service';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideAnimationsAsync(),AppService,importProvidersFrom(HttpClientModule), provideAnimationsAsync(), { provide: HTTP_INTERCEPTORS, useClass: AuthService, multi: true }, provideStore({st:cr}), provideEffects(), provideStoreDevtools({maxAge:10})]
+  providers: [provideRouter(routes), provideAnimationsAsync(),AppService,provideHttpClient(), provideAnimationsAsync(), { provide: HTTP_INTERCEPTORS, useClass: AuthService, multi: true }, provideStore({st:cr}), provideEffects(), provideStoreDevtools({maxAge:10})]
 };
