@@ -3,7 +3,7 @@ import { AppService } from '../app.service';
 import { ViewComponent } from '../view/view.component';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from '../profile/profile.component';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { AuthService } from '../interceptors/auth.service';
 import { CartComponent } from '../cart/cart.component';
 import { Store } from '@ngrx/store';
@@ -12,7 +12,11 @@ import { jwtDecode } from 'jwt-decode';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ViewComponent,CommonModule,ProfileComponent,HttpClientModule,CartComponent],
+  imports: [ViewComponent,CommonModule,ProfileComponent,
+// TODO: `HttpClientModule` should not be imported into a component directly.
+// Please refactor the code to add `provideHttpClient()` call to the provider list in the
+// application bootstrap logic and remove the `HttpClientModule` import from this component.
+CartComponent],
   providers:[{provide:HTTP_INTERCEPTORS,useClass:AuthService,multi:true}],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,7 +15,11 @@ import { mydirective } from '../myDirective';
   selector: 'app-login',
   standalone: true,
   providers: [mydirective],
-  imports: [HttpClientModule, FormsModule, MatInput, MatFormField, MatFormFieldModule, MatLabel, MatButton, MatButtonModule],
+  imports: [
+// TODO: `HttpClientModule` should not be imported into a component directly.
+// Please refactor the code to add `provideHttpClient()` call to the provider list in the
+// application bootstrap logic and remove the `HttpClientModule` import from this component.
+ FormsModule, MatInput, MatFormField, MatFormFieldModule, MatLabel, MatButton, MatButtonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
