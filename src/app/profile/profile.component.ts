@@ -17,7 +17,7 @@ export class ProfileComponent  implements OnInit{
 logOut() {
   sessionStorage.setItem('expiry','');
   this.appService.data.cart=[];
-  this.appService.logOut()
+  this.appService.logout.set(true);
   window.location.reload()
 }
   name: any;

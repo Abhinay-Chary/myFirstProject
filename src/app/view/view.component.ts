@@ -38,7 +38,7 @@ export class ViewComponent implements OnInit, OnChanges {
     this.forSearch = [...this.fruits]
     }
   }
-  filter(sel: any) {
+  filter(sel: string) {
     console.log(sel);
     if (sel != '') {
       if (sel == 'Vegetable')

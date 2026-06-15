@@ -3,8 +3,7 @@ import { AppService } from '../app.service';
 import { ViewComponent } from '../view/view.component';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from '../profile/profile.component';
-import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
-import { AuthService } from '../interceptors/auth.service';
+import {  HttpClient } from '@angular/common/http';
 import { CartComponent } from '../cart/cart.component';
 import { Store } from '@ngrx/store';
 import {select} from  '../actions/select'
@@ -17,7 +16,6 @@ import { jwtDecode } from 'jwt-decode';
 // Please refactor the code to add `provideHttpClient()` call to the provider list in the
 // application bootstrap logic and remove the `HttpClientModule` import from this component.
 CartComponent],
-  providers:[{provide:HTTP_INTERCEPTORS,useClass:AuthService,multi:true}],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -40,11 +38,11 @@ constructor(public appService:AppService,private http:HttpClient,private store:S
     this.temp1=x.data.cart
     console.log(x.data.cart,'cartitem')
   })
-this.appService.logout.subscribe(x=>{
-  if(x==true){
-    this.val=0
-  }
-})
+// this.appService.logout.subscribe(x=>{
+//   if(x==true){
+//     this.val=0
+//   }
+// })
   
   let d:any='st'
   this.store.select(d).subscribe(x=>{
