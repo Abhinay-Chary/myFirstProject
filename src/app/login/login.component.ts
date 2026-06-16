@@ -76,6 +76,7 @@ export class LoginComponent implements OnInit {
          const dcode= jwtDecode(t.toString());
         
          if(dcode.exp && dcode.iat){
+          this.appService.data.sessionTime= (dcode.exp-dcode.iat)*1000
         const timer= setTimeout(() => {
           window.location.reload();
            this.sb.open(`${this.userName} logged out successfully!!

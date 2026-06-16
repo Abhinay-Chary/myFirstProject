@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, OnInit, signal } from '@angular/core';
 import { AppService } from '../app.service';
 import { ViewComponent } from '../view/view.component';
 import { CommonModule } from '@angular/common';
@@ -26,6 +26,11 @@ export class HomeComponent implements OnInit {
   cart: boolean=false;
   temp1: any;
   val: any=0;
+  timer = signal(0);
+  formattedTime= computed(()=>{
+    const mins = Math.floor(this.timer()/60);
+    return   mins>0?`${mins}:${(this.timer()- (mins*60)).toString().padStart(2,'0')} mins`: `${this.timer()} sec`
+  })
 constructor(public appService:AppService,private http:HttpClient,private store:Store){
 
  }
@@ -37,7 +42,13 @@ constructor(public appService:AppService,private http:HttpClient,private store:S
   this.appService.getCart(token.name.name).subscribe((x:any)=>{
     this.temp1=x.data.cart
     console.log(x.data.cart,'cartitem')
-  })
+  });
+   const interval =setInterval(() => {
+    this.timer.update(v=> v + 1);
+    if(this.timer()>this.appService.data.sessionTime){
+      clearInterval(interval)
+    }
+   }, 1000);
 // this.appService.logout.subscribe(x=>{
 //   if(x==true){
 //     this.val=0
